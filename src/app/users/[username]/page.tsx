@@ -2,6 +2,8 @@ import { getBaseUrl } from "@/utils/getBaseUrl";
 import { Avatar, Image } from "@nextui-org/react";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 async function getUser({
   username,
 }: {
