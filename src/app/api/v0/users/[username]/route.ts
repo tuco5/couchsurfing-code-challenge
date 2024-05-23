@@ -1,5 +1,7 @@
 import { users } from "@/mock/users";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(
   _request: Request,
   { params }: { params: { username: string } }
@@ -11,5 +13,5 @@ export async function GET(
     friends: user?.friends.map((id) => users.filter((u) => u.id === id)[0]),
   };
 
-  return Response.json({ data: usersWithFriends });
+  return Response.json({ user: usersWithFriends });
 }

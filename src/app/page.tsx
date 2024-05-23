@@ -4,21 +4,17 @@ import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
-async function getUsers(): Promise<{ data: User[] }> {
-  const res = await fetch(`${getBaseUrl()}/api/v0/users`);
-  console.log(await res.json());
-  return res.json();
-}
+type Data = { users: User[] };
 
 export default async function Home() {
-  console.log("init home");
-  const { data } = await getUsers();
-  console.log("after promise");
+  const res = await fetch(`${getBaseUrl()}/api/v0/users`);
+  const { users }: Data = await res.json();
+
   return (
     <div className="flex-col flex gap-4 justify-center items-center p-10">
       <div className="flex flex-col gap-6">
-        {data &&
-          data.map((user) => (
+        {users &&
+          users.map((user) => (
             <div className="w-full max-w-[300px]" key={user.id}>
               <User
                 name={`${user.firstName} ${user.lastName}`}

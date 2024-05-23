@@ -5,22 +5,16 @@ import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
-async function getUser({
-  username,
-}: {
-  username: string;
-}): Promise<{ data: User }> {
-  const res = await fetch(`${getBaseUrl()}/api/v0/users/${username}`);
-  return res.json();
-}
+type Data = { user: User };
 
 export default async function UserPage({
   params,
 }: {
   params: { username: string };
 }) {
-  const { data: user } = await getUser(params);
-
+  const res = await fetch(`${getBaseUrl()}/api/v0/users/${params.username}`);
+  const { user }: Data = await res.json();
+  console.info(user);
   if (!user) return notFound();
 
   return (
