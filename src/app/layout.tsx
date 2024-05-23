@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextUIProvider>
-          <main className="text-foreground bg-gradient-to-br from-[#0F2027] via-[#203A43] to-[#2C5364]">
+          <main className="min-h-screen text-foreground bg-gradient-to-br from-[#0F2027] via-[#203A43] to-[#2C5364]">
             {children}
           </main>
         </NextUIProvider>
