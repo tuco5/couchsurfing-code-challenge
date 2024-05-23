@@ -1,14 +1,23 @@
 import { getBaseUrl } from "@/utils/getBaseUrl";
 import { User } from "@nextui-org/react";
 import Link from "next/link";
-
-export const dynamic = "force-dynamic";
+import { useEffect, useState } from "react";
 
 type Data = { users: User[] };
 
-export default async function Home() {
-  const res = await fetch(`${getBaseUrl()}/api/v0/users`);
-  const { users }: Data = await res.json();
+export default function Home() {
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const res = await fetch(`${getBaseUrl()}/api/v0/users`);
+      const data: Data = await res.json();
+      console.log({ data });
+      if (Boolean(data.users)) setUsers(data.users);
+    };
+    console.log("about to fetch");
+    fetchUsers();
+  }, [setUsers]);
 
   return (
     <div className="flex-col flex gap-4 justify-center items-center p-10">
