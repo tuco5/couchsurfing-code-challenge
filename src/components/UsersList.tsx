@@ -1,8 +1,9 @@
+import { getBaseUrl } from "@/utils/getBaseUrl";
 import { User } from "@nextui-org/react";
 import Link from "next/link";
 
 async function getUsers(): Promise<{ data: User[] }> {
-  const res = await fetch("http://localhost:3000/api/v0/users");
+  const res = await fetch(`${getBaseUrl()}/api/v0/users`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
