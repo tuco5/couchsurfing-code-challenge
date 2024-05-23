@@ -1,3 +1,6 @@
+import { User } from "@nextui-org/react";
+import Link from "next/link";
+
 interface User {
   id: number;
   firstName: string;
@@ -17,7 +20,7 @@ interface User {
   friends: User[];
 }
 
-async function getUsers() {
+async function getUsers(): Promise<{ data: User[] }> {
   const res = await fetch("http://localhost:3000/api/v0/users");
 
   if (!res.ok) {
@@ -28,12 +31,28 @@ async function getUsers() {
 }
 
 export async function UsersList() {
-  const { users }: { users: User[] } = await getUsers();
-  console.log(users);
+  const { data } = await getUsers();
+
   return (
-    <div>
-      {users.map((user) => (
-        <p key={user.id}>{user.firstName}</p>
+    <div className="flex flex-col gap-6">
+      {data.map((user) => (
+        <div className="w-full max-w-[300px]">
+          <User
+            key={user.id}
+            name={`${user.firstName} ${user.lastName}`}
+            className="text-white "
+            description={
+              <Link className="text-primary" href={user.id.toString()}>
+                @{user.username}
+              </Link>
+            }
+            avatarProps={{
+              isBordered: true,
+              color: "success",
+              src: user.image,
+            }}
+          />
+        </div>
       ))}
     </div>
   );
