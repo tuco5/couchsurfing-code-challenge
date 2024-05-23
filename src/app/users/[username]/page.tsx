@@ -1,13 +1,18 @@
-"use client";
 import { getBaseUrl } from "@/utils/getBaseUrl";
 import { Avatar, Image } from "@nextui-org/react";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 type Data = { user: User };
 type Params = { username: string };
 
-async function getUser({ username }: Params): Promise<Data> {
-  const res = await fetch(`${getBaseUrl()}/api/v0/users/${username}`);
+export async function getUser({ username }: Params): Promise<Data> {
+  const res = await fetch(`${getBaseUrl()}/api/v0/users/${username}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   return res.json();
 }
 

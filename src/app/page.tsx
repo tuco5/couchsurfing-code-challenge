@@ -2,6 +2,8 @@ import { getBaseUrl } from "@/utils/getBaseUrl";
 import { User } from "@nextui-org/react";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 type Data = { users: User[] };
 
 async function getUsers(): Promise<Data> {
