@@ -17,9 +17,8 @@ export async function UsersList() {
   return (
     <div className="flex flex-col gap-6">
       {data.map((user) => (
-        <div className="w-full max-w-[300px]">
+        <div className="w-full max-w-[300px]" key={user.id}>
           <User
-            key={user.id}
             name={`${user.firstName} ${user.lastName}`}
             className="text-white "
             description={
