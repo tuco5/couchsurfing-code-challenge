@@ -7,21 +7,25 @@ export const dynamic = "force-dynamic";
 type Data = { user: User };
 type Params = { username: string };
 
+const url = `${getBaseUrl()}/api/v0/users`;
+
 async function getUser({ username }: Params): Promise<Data> {
-  console.log({ fetch: `${getBaseUrl()}/api/v0/users/${username}` });
-  const res = await fetch(`${getBaseUrl()}/api/v0/users/${username}`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  console.log(res.ok);
-  console.log(await res.json());
-  return res.json();
+  try {
+    const res = await fetch(`${url}/${username}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to fetch data");
+  }
 }
 
 export default async function UserPage({ params }: { params: Params }) {
   const { user } = await getUser(params);
-
+  console.log(user);
   return (
     <UserPageLayout>
       <div className="w-full max-w-[600px] bg-white bg-opacity-60 rounded-lg h-[300px] flex items-center justify-start p-6 gap-6">

@@ -9,18 +9,14 @@ type Data = { users: User[] };
 const url = `${getBaseUrl()}/api/v0/users`;
 
 async function getUsers(): Promise<Data> {
-  console.log({ fetch: url });
   try {
     const res = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    console.log(res.ok);
-    console.log(await res.json());
     return res.json();
   } catch (err) {
-    console.error(err);
     throw new Error("Failed to fetch data");
   }
 }

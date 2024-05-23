@@ -1,4 +1,4 @@
-import { users } from "@/mock/users";
+import data from "@/mock/users.json";
 
 export const dynamic = "force-dynamic";
 
@@ -6,12 +6,15 @@ export async function GET(
   _request: Request,
   { params }: { params: { username: string } }
 ) {
-  const user = users.find((u) => u.username === params.username);
+  const user = data.users.find((u) => u.username === params.username);
 
-  const usersWithFriends = {
+  const userWithFriends = {
     ...user,
-    friends: user?.friends.map((id) => users.filter((u) => u.id === id)[0]),
+    friends: user?.friends.map((id) =>
+      data.users.filter((u) => u.id === id).pop()
+    ),
   };
 
-  return Response.json({ user: usersWithFriends });
+  const response = { user: userWithFriends };
+  return Response.json(response);
 }

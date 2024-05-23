@@ -1,7 +1,7 @@
-import { users } from "@/mock/users";
+import data from "@/mock/users.json";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  return Response.json({ users });
+  return Response.json(data);
 }
