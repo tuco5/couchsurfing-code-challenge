@@ -1,25 +1,6 @@
 import { User } from "@nextui-org/react";
 import Link from "next/link";
 
-interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  maidenName: string;
-  age: 38;
-  gender: string;
-  email: string;
-  phone: string;
-  username: string;
-  password: string;
-  birthDate: string;
-  image: string;
-  bloodGroup: string;
-  height: number;
-  weight: number;
-  friends: User[];
-}
-
 async function getUsers(): Promise<{ data: User[] }> {
   const res = await fetch("http://localhost:3000/api/v0/users");
 
@@ -42,13 +23,14 @@ export async function UsersList() {
             name={`${user.firstName} ${user.lastName}`}
             className="text-white "
             description={
-              <Link className="text-primary" href={user.username}>
+              <Link className="text-primary" href={`/users/${user.username}`}>
                 @{user.username}
               </Link>
             }
             avatarProps={{
               isBordered: true,
-              color: "success",
+              color: "primary",
+              size: "lg",
               src: user.image,
             }}
           />
