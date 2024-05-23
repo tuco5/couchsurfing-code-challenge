@@ -6,7 +6,8 @@ export const dynamic = "force-dynamic";
 
 async function getUsers(): Promise<{ data: User[] }> {
   const res = await fetch(`${getBaseUrl()}/api/v0/users`);
-
+  console.log("get users");
+  console.log({ baseUrl: getBaseUrl() });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
