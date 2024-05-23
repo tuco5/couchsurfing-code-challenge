@@ -1,34 +1,18 @@
 "use client";
-import { Avatar, Image, Spinner } from "@nextui-org/react";
+import { getBaseUrl } from "@/utils/getBaseUrl";
+import { Avatar, Image } from "@nextui-org/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 type Data = { user: User };
+type Params = { username: string };
 
-export default function UserPage({ params }: { params: { username: string } }) {
-  const [user, setUser] = useState<User>();
-  const [isLoading, setIsLoading] = useState(true);
+async function getUser({ username }: Params): Promise<Data> {
+  const res = await fetch(`${getBaseUrl()}/api/v0/users/${username}`);
+  return res.json();
+}
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const res = await fetch(`/api/v0/users/${params.username}`);
-      const data: Data = await res.json();
-
-      if (Boolean(data.user)) {
-        setUser(data.user);
-        setIsLoading(false);
-      }
-    };
-    setIsLoading(true);
-    fetchUser();
-  }, [setUser]);
-
-  if (isLoading)
-    return (
-      <UserPageLayout>
-        <Spinner size="lg" color="danger" />
-      </UserPageLayout>
-    );
+export default async function UserPage({ params }: { params: Params }) {
+  const { user } = await getUser(params);
 
   return (
     <UserPageLayout>
