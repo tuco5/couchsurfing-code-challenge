@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 type Data = { user: User };
 type Params = { username: string };
 
-export async function getUser({ username }: Params): Promise<Data> {
+async function getUser({ username }: Params): Promise<Data> {
   const res = await fetch(`${getBaseUrl()}/api/v0/users/${username}`, {
     headers: {
       "Content-Type": "application/json",
