@@ -11,7 +11,6 @@ async function getUser({
   username: string;
 }): Promise<{ data: User }> {
   const res = await fetch(`${getBaseUrl()}/api/v0/users/${username}`);
-
   return res.json();
 }
 
