@@ -1,6 +1,7 @@
 import { getBaseUrl } from "@/utils/getBaseUrl";
 import { Avatar, Image } from "@nextui-org/react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -9,23 +10,26 @@ type Params = { username: string };
 
 const url = `${getBaseUrl()}/api/v0/users`;
 
-async function getUser({ username }: Params): Promise<Data> {
+async function getUser({ username }: Params): Promise<Data | null> {
   try {
     const res = await fetch(`${url}/${username}`, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    return res.json();
+    if (res.ok) return res.json();
   } catch (err) {
     console.error(err);
     throw new Error("Failed to fetch data");
   }
+  return null;
 }
 
 export default async function UserPage({ params }: { params: Params }) {
-  const { user } = await getUser(params);
-  console.log(user);
+  const data = await getUser(params);
+
+  if (!data) return notFound();
+  const user = data.user;
   return (
     <UserPageLayout>
       <div className="w-full max-w-[600px] bg-white bg-opacity-60 rounded-lg h-[300px] flex items-center justify-start p-6 gap-6">

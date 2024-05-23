@@ -8,22 +8,33 @@ type Data = { users: User[] };
 
 const url = `${getBaseUrl()}/api/v0/users`;
 
-async function getUsers(): Promise<Data> {
+async function getUsers(): Promise<Data | null> {
   try {
     const res = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    return res.json();
+    if (res.ok) {
+      return res.json();
+    }
   } catch (err) {
+    console.error(err);
     throw new Error("Failed to fetch data");
   }
+
+  return null;
 }
 
 export default async function Home() {
-  const { users } = await getUsers();
-  console.log(users);
+  const data = await getUsers();
+  if (!data)
+    return (
+      <UsersPageLayout>
+        Sorry, no users to show, try again later...
+      </UsersPageLayout>
+    );
+  const users = data.users;
   return (
     <UsersPageLayout>
       {users &&
