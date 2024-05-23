@@ -8,11 +8,14 @@ type Data = { user: User };
 type Params = { username: string };
 
 async function getUser({ username }: Params): Promise<Data> {
+  console.log({ fetch: `${getBaseUrl()}/api/v0/users/${username}` });
   const res = await fetch(`${getBaseUrl()}/api/v0/users/${username}`, {
     headers: {
       "Content-Type": "application/json",
     },
   });
+  console.log(res.ok);
+  console.log(await res.json());
   return res.json();
 }
 
