@@ -1,9 +1,9 @@
+"use client";
 import { getBaseUrl } from "@/utils/getBaseUrl";
 import { Avatar, Image } from "@nextui-org/react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
-export const dynamic = "force-dynamic";
+import { useEffect, useState } from "react";
 
 type Data = { user: User };
 
@@ -12,9 +12,20 @@ export default async function UserPage({
 }: {
   params: { username: string };
 }) {
-  const res = await fetch(`${getBaseUrl()}/api/v0/users/${params.username}`);
-  const { user }: Data = await res.json();
-  console.info(user);
+  const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await fetch(
+        `${getBaseUrl()}/api/v0/users/${params.username}`
+      );
+      const data: Data = await res.json();
+      console.log({ data });
+      if (Boolean(data.user)) setUser(data.user);
+    };
+    fetchUser();
+  }, [setUser]);
+
   if (!user) return notFound();
 
   return (

@@ -1,3 +1,4 @@
+"use client";
 import { getBaseUrl } from "@/utils/getBaseUrl";
 import { User } from "@nextui-org/react";
 import Link from "next/link";
