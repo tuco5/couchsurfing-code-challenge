@@ -14,7 +14,7 @@ export async function GET(
       data.users.filter((u) => u.id === id).pop()
     ),
   };
-
   const response = { user: userWithFriends };
+  console.info(response);
   return Response.json(response);
 }
