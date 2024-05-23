@@ -10,7 +10,7 @@ async function getUser({
   username: string;
 }): Promise<{ data: User }> {
   const res = await fetch(`${getBaseUrl()}/api/v0/users/${username}`);
-  console.log("get users", { res });
+  console.log("get users", { ok: res.ok });
   console.log({ baseUrl: getBaseUrl() });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
