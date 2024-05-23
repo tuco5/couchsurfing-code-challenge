@@ -99,7 +99,7 @@ export const users = [
     bloodGroup: "A+",
     height: 149,
     weight: 105.7,
-    friends: [1, 2, 3, 4, 5],
+    friends: [1, 5, 15, 19],
   },
   {
     id: 7,
@@ -116,7 +116,7 @@ export const users = [
     bloodGroup: "B-",
     height: 172,
     weight: 78.1,
-    friends: [1, 2, 3, 4, 5],
+    friends: [11, 12, 13, 14, 15],
   },
   {
     id: 8,
@@ -133,7 +133,7 @@ export const users = [
     bloodGroup: "A-",
     height: 146,
     weight: 52.1,
-    friends: [1, 2, 3, 4, 5],
+    friends: [6, 7, 8],
   },
   {
     id: 9,
@@ -150,7 +150,7 @@ export const users = [
     bloodGroup: "A+",
     height: 170,
     weight: 97.1,
-    friends: [1, 2, 3, 4, 5],
+    friends: [22, 20, 15],
   },
   {
     id: 10,
@@ -167,7 +167,7 @@ export const users = [
     bloodGroup: "O+",
     height: 198,
     weight: 48,
-    friends: [1, 2, 3, 4, 5],
+    friends: [5, 8, 6, 9, 11],
   },
   {
     id: 11,
@@ -184,7 +184,7 @@ export const users = [
     bloodGroup: "B-",
     height: 203,
     weight: 63.7,
-    friends: [1, 2, 3, 4, 5],
+    friends: [24, 23],
   },
   {
     id: 12,
@@ -201,7 +201,7 @@ export const users = [
     bloodGroup: "O-",
     height: 168,
     weight: 96.8,
-    friends: [1, 2, 3, 4, 5],
+    friends: [1, 11, 16, 17],
   },
   {
     id: 13,
@@ -218,7 +218,7 @@ export const users = [
     bloodGroup: "O+",
     height: 181,
     weight: 56.5,
-    friends: [1, 2, 3, 4, 5],
+    friends: [21, 20, 2, 23],
   },
   {
     id: 14,
@@ -235,7 +235,7 @@ export const users = [
     bloodGroup: "O+",
     height: 150,
     weight: 100.3,
-    friends: [1, 2, 3, 4, 5],
+    friends: [22, 5],
   },
   {
     id: 15,
@@ -252,7 +252,7 @@ export const users = [
     bloodGroup: "A+",
     height: 176,
     weight: 45.7,
-    friends: [1, 2, 3, 4, 5],
+    friends: [17, 15],
   },
   {
     id: 16,
@@ -269,7 +269,7 @@ export const users = [
     bloodGroup: "B+",
     height: 166,
     weight: 87.2,
-    friends: [1, 2, 3, 4, 5],
+    friends: [12, 25, 14, 18, 19],
   },
   {
     id: 17,
@@ -286,7 +286,7 @@ export const users = [
     bloodGroup: "O-",
     height: 199,
     weight: 94.3,
-    friends: [1, 2, 3, 4, 5],
+    friends: [8, 4, 5, 6],
   },
   {
     id: 18,
@@ -303,7 +303,7 @@ export const users = [
     bloodGroup: "AB-",
     height: 192,
     weight: 97,
-    friends: [1, 2, 3, 4, 5],
+    friends: [12, 11, 15, 16, 21],
   },
   {
     id: 19,
@@ -320,7 +320,7 @@ export const users = [
     bloodGroup: "A-",
     height: 167,
     weight: 65.3,
-    friends: [1, 2, 3, 4, 5],
+    friends: [11, 15],
   },
   {
     id: 20,
@@ -337,7 +337,7 @@ export const users = [
     bloodGroup: "O-",
     height: 175,
     weight: 68,
-    friends: [1, 2, 3, 4, 5],
+    friends: [],
   },
   {
     id: 21,
@@ -354,7 +354,7 @@ export const users = [
     bloodGroup: "A-",
     height: 173,
     weight: 69.9,
-    friends: [1, 2, 3, 4, 5],
+    friends: [12, 13, 15],
   },
   {
     id: 22,
@@ -371,7 +371,7 @@ export const users = [
     bloodGroup: "B-",
     height: 164,
     weight: 87.1,
-    friends: [1, 2, 3, 4, 5],
+    friends: [30],
   },
   {
     id: 23,
@@ -388,7 +388,7 @@ export const users = [
     bloodGroup: "O-",
     height: 151,
     weight: 96.7,
-    friends: [1, 2, 3, 4, 5],
+    friends: [30, 31, 28, 15, 11],
   },
   {
     id: 24,
@@ -405,7 +405,7 @@ export const users = [
     bloodGroup: "O+",
     height: 166,
     weight: 93.3,
-    friends: [1, 2, 3, 4, 5],
+    friends: [15, 13, 2, 8, 9],
   },
   {
     id: 25,
@@ -422,7 +422,7 @@ export const users = [
     bloodGroup: "O+",
     height: 180,
     weight: 102.1,
-    friends: [1, 2, 3, 4, 5],
+    friends: [26, 24, 25],
   },
   {
     id: 26,
@@ -439,7 +439,7 @@ export const users = [
     bloodGroup: "O-",
     height: 146,
     weight: 65.5,
-    friends: [1, 2, 3, 4, 5],
+    friends: [27, 28, 29],
   },
   {
     id: 27,
@@ -456,7 +456,7 @@ export const users = [
     bloodGroup: "A-",
     height: 197,
     weight: 71.5,
-    friends: [1, 2, 3, 4, 5],
+    friends: [1, 11, 21],
   },
   {
     id: 28,
@@ -473,7 +473,7 @@ export const users = [
     bloodGroup: "B-",
     height: 172,
     weight: 90.2,
-    friends: [1, 2, 3, 4, 5],
+    friends: [25, 26, 1, 2, 13],
   },
   {
     id: 29,
@@ -490,7 +490,7 @@ export const users = [
     bloodGroup: "A-",
     height: 166,
     weight: 93.7,
-    friends: [1, 2, 3, 4, 5],
+    friends: [14, 16, 18, 24],
   },
   {
     id: 30,
