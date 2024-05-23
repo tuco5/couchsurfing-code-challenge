@@ -1,35 +1,21 @@
-"use client";
 import { getBaseUrl } from "@/utils/getBaseUrl";
-import { Spinner, User } from "@nextui-org/react";
+import { User } from "@nextui-org/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 type Data = { users: User[] };
 
-export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [users, setUsers] = useState<User[]>([]);
+async function getUsers(): Promise<Data> {
+  const res = await fetch(`${getBaseUrl()}/api/v0/users`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return res.json();
+}
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const res = await fetch(`/api/v0/users`);
-      const data: Data = await res.json();
-      if (Boolean(data.users)) {
-        setUsers(data.users);
-        setIsLoading(false);
-      }
-    };
-    setIsLoading(true);
-    fetchUsers();
-  }, [setUsers]);
-
-  if (isLoading)
-    return (
-      <UsersPageLayout>
-        <Spinner size="lg" color="danger" />
-      </UsersPageLayout>
-    );
-
+export default async function Home() {
+  const { users } = await getUsers();
+  console.log(users);
   return (
     <UsersPageLayout>
       {users &&
