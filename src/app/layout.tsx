@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
+import { Header } from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <NextUIProvider>
           <main className="min-h-screen text-foreground bg-gradient-to-br from-[#0F2027] via-[#203A43] to-[#2C5364]">
+            <Header />
             {children}
           </main>
         </NextUIProvider>
