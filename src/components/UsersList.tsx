@@ -42,7 +42,7 @@ export async function UsersList() {
             name={`${user.firstName} ${user.lastName}`}
             className="text-white "
             description={
-              <Link className="text-primary" href={user.id.toString()}>
+              <Link className="text-primary" href={user.username}>
                 @{user.username}
               </Link>
             }
