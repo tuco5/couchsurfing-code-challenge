@@ -14,13 +14,11 @@ export default function Home() {
     const fetchUsers = async () => {
       const res = await fetch(`/api/v0/users`);
       const data: Data = await res.json();
-      console.log({ data });
       if (Boolean(data.users)) {
         setUsers(data.users);
         setIsLoading(false);
       }
     };
-    console.log("about to fetch");
     setIsLoading(true);
     fetchUsers();
   }, [setUsers]);
